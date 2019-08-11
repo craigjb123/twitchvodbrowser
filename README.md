@@ -8,3 +8,4 @@ To-dos:
 - setup an input field to plugin in any username
 - perfromance
 - mobile support
+- make it pretty
