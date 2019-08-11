@@ -3,7 +3,9 @@ $(document).ready(function() {
     var videos = [];
     var cursor = "";
 
-    userid = '105918024&'
+    // Add userid here
+    var userid = '105918024&';
+    var clientid = 'wyf7fkavkuhwmmdq5xyfq2zyarejxs';
 
     function getVideos(cursor) {
 
@@ -13,10 +15,11 @@ $(document).ready(function() {
             url = 'https://api.twitch.tv/helix/videos?user_id='+ userid +'&first=100&sort=time';
         }
         
+
         $.ajax({
             url: url,
             headers: {
-            'Client-ID':'wyf7fkavkuhwmmdq5xyfq2zyarejxs'         
+            'Client-ID':clientid       
             },                    
             success:function(data){
                
@@ -34,7 +37,7 @@ $(document).ready(function() {
                     var gametitle = gametitle.replace("ARCHIVe - ", "");
 
                     
-
+                    // these are some custom filters to deal with RGToms videos, customize or remove as needed
                     if (gametitle.indexOf("(Pt.2") >= 0) {
                          var game = gametitle.substr(0, gametitle.indexOf('(')); 
                     } else if (gametitle.indexOf("(Pt.3") >= 0) {
@@ -69,8 +72,6 @@ $(document).ready(function() {
                     });
                 }
 
-               // videos.push(data);
-
                 if(data.pagination.cursor){
                     getVideos(data.pagination.cursor);
                 } 
@@ -78,14 +79,13 @@ $(document).ready(function() {
         });
     }
     getVideos();
-
-    console.log(videos);
-    
+   
     setTimeout(
 
     function()   {
         var groupColumn = 0;
-        var table = $('#example').DataTable({
+        // optionally use twitch-flat if you dont want grouping
+        var table = $('#twitch-grouped').DataTable({
             data: videos,                       
             columns: [
                 {'data': 'game', 'sType': 'html', "bVisible": false, "bSearchable": false},
@@ -126,7 +126,7 @@ $(document).ready(function() {
 
 
         $('.loading').hide();
-
+        // needs to be improved, this is not a good way to do this!
       }, 5000); 
 
 });       
