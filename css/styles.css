@@ -1,0 +1,23 @@
+tr.group td {
+    background: #4B367C;
+    color: #fff; 
+    font-weight: bold; 
+}
+
+.table-bordered td, .table-bordered th {
+    border: none;
+}
+
+a {
+    color: #4B367C;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+
+body a:hover {
+    color: #4B367C;
+    text-decoration: none;
+}
+
+
