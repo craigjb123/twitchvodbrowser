@@ -5,6 +5,7 @@ $(document).ready(function() {
 
     // Add userid here
     var userid = '105918024&';
+    // replace this with your own  https://dev.twitch.tv/console/apps/create
     var clientid = 'wyf7fkavkuhwmmdq5xyfq2zyarejxs';
 
     function getVideos(cursor) {
